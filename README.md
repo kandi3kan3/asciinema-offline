@@ -1,15 +1,17 @@
-_Note: This is README for `development` branch. [See the version for latest stable release](https://github.com/asciinema/asciinema/blob/master/README.md)._
+# asciinema-offline
 
-# asciinema
+This is a fork of [asciinema](https://github.com/asciinema/asciinema)
+patched to require a local path for recording. Running `asciinema rec`
+will NOT cause you to upload your terminal session by mistake!
 
-[![Build Status](https://travis-ci.org/asciinema/asciinema.svg?branch=develop)](https://travis-ci.org/asciinema/asciinema)
-[![PyPI](https://img.shields.io/pypi/v/asciinema.svg)](https://pypi.org/project/asciinema/)
-[![license](http://img.shields.io/badge/license-GNU-blue.svg)](https://raw.githubusercontent.com/asciinema/asciinema/master/LICENSE)
+You can still save a session to a file and upload it later if desired.
 
-Terminal session recorder and the best companion of
-[asciinema.org](https://asciinema.org).
+asciinema-offline can be installed with `pip`.
+I haven't added this to PyPI, so just grab it from GitHub:
 
-[![demo](https://asciinema.org/a/113463.svg)](https://asciinema.org/a/113463?autoplay=1)
+```bash
+pip install --user git+https://github.com/kandi3kan3/asciinema-offline
+```
 
 ## Quick intro
 
