@@ -34,16 +34,7 @@ class RecordCommand(Command):
         }
 
     def execute(self):
-        upload = False
         append = self.append
-
-        if self.filename == "":
-            if self.raw:
-                self.print_error("filename required when recording in raw mode")
-                return 1
-            else:
-                self.filename = _tmp_path()
-                upload = True
 
         if os.path.exists(self.filename):
             if not os.access(self.filename, os.W_OK):
@@ -90,34 +81,7 @@ class RecordCommand(Command):
             return 1
 
         self.print_info("recording finished")
-
-        if upload:
-            if not self.assume_yes:
-                self.print_info("press <enter> to upload to %s, <ctrl-c> to save locally"
-                                % self.api.hostname())
-                try:
-                    sys.stdin.readline()
-                except KeyboardInterrupt:
-                    self.print("\r", end="")
-                    self.print_info("asciicast saved to %s" % self.filename)
-                    return 0
-
-            try:
-                result, warn = self.api.upload_asciicast(self.filename)
-
-                if warn:
-                    self.print_warning(warn)
-
-                os.remove(self.filename)
-                self.print(result.get('message') or result['url'])
-
-            except APIError as e:
-                self.print("\r\x1b[A", end="")
-                self.print_error("upload failed: %s" % str(e))
-                self.print_error("retry later by running: asciinema upload %s" % self.filename)
-                return 1
-        else:
-            self.print_info("asciicast saved to %s" % self.filename)
+        self.print_info("asciicast saved to %s" % self.filename)
 
         return 0
 
