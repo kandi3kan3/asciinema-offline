@@ -5,7 +5,7 @@ from setuptools import setup
 if sys.version_info.major < 3:
     sys.exit('Python < 3 is unsupported.')
 
-url_template = 'https://github.com/asciinema/asciinema/archive/v%s.tar.gz'
+url_template = 'https://github.com/kandi3kan3/asciinema-offline/archive/v%s-offline.tar.gz'
 requirements = []
 test_requirements = ['nose']
 
@@ -13,7 +13,7 @@ with open('README.md', encoding='utf8') as file:
     long_description = file.read()
 
 setup(
-    name='asciinema',
+    name='asciinema-offline',
     version=asciinema.__version__,
     packages=['asciinema', 'asciinema.commands', 'asciinema.asciicast'],
     license='GNU GPLv3',
@@ -22,7 +22,7 @@ setup(
     long_description_content_type='text/markdown',
     author=asciinema.__author__,
     author_email='m@ku1ik.com',
-    url='https://asciinema.org',
+    url='https://github.com/kandi3kan3/asciinema-offline',
     download_url=(url_template % asciinema.__version__),
     entry_points={
         'console_scripts': [

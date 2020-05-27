@@ -57,7 +57,7 @@ For help on a specific command run:
   \x1b[1masciinema <command> -h\x1b[0m""",
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    parser.add_argument('--version', action='version', version='asciinema %s' % __version__)
+    parser.add_argument('--version', action='version', version='asciinema-offline %s' % __version__)
 
     subparsers = parser.add_subparsers()
 
