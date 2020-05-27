@@ -40,12 +40,10 @@ def main():
     parser = argparse.ArgumentParser(
         description="Record and share your terminal sessions, the right way.",
         epilog="""example usage:
-  Record terminal and upload it to asciinema.org:
-    \x1b[1masciinema rec\x1b[0m
   Record terminal to local file:
     \x1b[1masciinema rec demo.cast\x1b[0m
-  Record terminal and upload it to asciinema.org, specifying title:
-    \x1b[1masciinema rec -t "My git tutorial"\x1b[0m
+  Record terminal to local file, specifying title:
+    \x1b[1masciinema rec -t "My git tutorial" demo.cast\x1b[0m
   Record terminal to local file, limiting idle time to max 2.5 sec:
     \x1b[1masciinema rec -i 2.5 demo.cast\x1b[0m
   Replay terminal recording from local file:
@@ -75,7 +73,7 @@ For help on a specific command run:
     parser_rec.add_argument('-i', '--idle-time-limit', help='limit recorded idle time to given number of seconds', type=positive_float, default=maybe_str(cfg.record_idle_time_limit))
     parser_rec.add_argument('-y', '--yes', help='answer "yes" to all prompts (e.g. upload confirmation)', action='store_true', default=cfg.record_yes)
     parser_rec.add_argument('-q', '--quiet', help='be quiet, suppress all notices/warnings (implies -y)', action='store_true', default=cfg.record_quiet)
-    parser_rec.add_argument('filename', nargs='?', default='', help='filename/path to save the recording to')
+    parser_rec.add_argument('filename', help='filename/path to save the recording to')
     parser_rec.set_defaults(cmd=RecordCommand)
 
     # create the parser for the "play" command
